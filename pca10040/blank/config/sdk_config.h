@@ -149,7 +149,7 @@
 #endif
 // <o> NRFX_UARTE0_ENABLED - Enable UARTE0 instance 
 #ifndef NRFX_UARTE0_ENABLED
-#define NRFX_UARTE0_ENABLED 0
+#define NRFX_UARTE0_ENABLED 1
 #endif
 
 // <o> NRFX_UARTE_DEFAULT_CONFIG_HWFC  - Hardware Flow Control
@@ -266,7 +266,7 @@
 // <e> NRFX_UART_ENABLED - nrfx_uart - UART peripheral driver
 //==========================================================
 #ifndef NRFX_UART_ENABLED
-#define NRFX_UART_ENABLED 1
+#define NRFX_UART_ENABLED 0
 #endif
 // <o> NRFX_UART0_ENABLED - Enable UART0 instance 
 #ifndef NRFX_UART0_ENABLED
@@ -458,7 +458,7 @@
  
 
 #ifndef UART_LEGACY_SUPPORT
-#define UART_LEGACY_SUPPORT 1
+#define UART_LEGACY_SUPPORT 0
 #endif
 
 // <e> UART0_ENABLED - Enable UART0 instance
@@ -683,7 +683,7 @@
 // <e> NRF_LOG_ENABLED - nrf_log - Logger
 //==========================================================
 #ifndef NRF_LOG_ENABLED
-#define NRF_LOG_ENABLED 1
+#define NRF_LOG_ENABLED 0
 #endif
 // <h> Log message pool - Configuration of log message pool
 

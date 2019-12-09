@@ -8,7 +8,7 @@
   <Extensions>
     <cExt>*.c</cExt>
     <aExt>*.s*; *.src; *.a*</aExt>
-    <oExt>*.obj</oExt>
+    <oExt>*.obj; *.o</oExt>
     <lExt>*.lib</lExt>
     <tExt>*.txt; *.h; *.inc</tExt>
     <pExt>*.plm</pExt>
@@ -101,6 +101,8 @@
         <sRunDeb>0</sRunDeb>
         <sLrtime>0</sLrtime>
         <bEvRecOn>1</bEvRecOn>
+        <bSchkAxf>0</bSchkAxf>
+        <bTchkAxf>0</bTchkAxf>
         <nTsel>3</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
@@ -159,11 +161,16 @@
       <LintExecutable></LintExecutable>
       <LintConfigFile></LintConfigFile>
       <bLintAuto>0</bLintAuto>
-      <Lin2Executable></Lin2Executable>
-      <Lin2ConfigFile></Lin2ConfigFile>
-      <bLin2Auto>0</bLin2Auto>
       <bAutoGenD>0</bAutoGenD>
-      <bAuto2GenD>0</bAuto2GenD>
+      <LntExFlags>0</LntExFlags>
+      <pMisraName></pMisraName>
+      <pszMrule></pszMrule>
+      <pSingCmds></pSingCmds>
+      <pMultCmds></pMultCmds>
+      <pMisraNamep></pMisraNamep>
+      <pszMrulep></pszMrulep>
+      <pSingCmdsp></pSingCmdsp>
+      <pMultCmdsp></pMultCmdsp>
     </TargetOption>
   </Target>
 
@@ -213,7 +220,7 @@
 
   <Group>
     <GroupName>Board Definition</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -244,8 +251,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\..\components\drivers_nrf\common\nrf_drv_common.c</PathWithFileName>
-      <FilenameWithoutPath>nrf_drv_common.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\..\..\integration\nrfx\legacy\nrf_drv_uart.c</PathWithFileName>
+      <FilenameWithoutPath>nrf_drv_uart.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -256,8 +263,32 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\..\components\drivers_nrf\uart\nrf_drv_uart.c</PathWithFileName>
-      <FilenameWithoutPath>nrf_drv_uart.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\..\..\modules\nrfx\drivers\src\nrfx_uart.c</PathWithFileName>
+      <FilenameWithoutPath>nrfx_uart.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>3</GroupNumber>
+      <FileNumber>7</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\..\..\modules\nrfx\drivers\src\nrfx_uarte.c</PathWithFileName>
+      <FilenameWithoutPath>nrfx_uarte.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>3</GroupNumber>
+      <FileNumber>8</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\..\..\modules\nrfx\drivers\src\prs\nrfx_prs.c</PathWithFileName>
+      <FilenameWithoutPath>nrfx_prs.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -271,7 +302,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>7</FileNumber>
+      <FileNumber>9</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -283,7 +314,7 @@
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>8</FileNumber>
+      <FileNumber>10</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -295,7 +326,7 @@
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>9</FileNumber>
+      <FileNumber>11</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -307,7 +338,7 @@
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>10</FileNumber>
+      <FileNumber>12</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -319,7 +350,7 @@
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>11</FileNumber>
+      <FileNumber>13</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -331,7 +362,7 @@
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>12</FileNumber>
+      <FileNumber>14</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -343,7 +374,7 @@
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>13</FileNumber>
+      <FileNumber>15</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -355,7 +386,7 @@
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>14</FileNumber>
+      <FileNumber>16</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -369,13 +400,13 @@
 
   <Group>
     <GroupName>nRF_Log</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>15</FileNumber>
+      <FileNumber>17</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -387,7 +418,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>16</FileNumber>
+      <FileNumber>18</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -401,25 +432,13 @@
 
   <Group>
     <GroupName>nRF_Segger_RTT</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>17</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\..\external\segger_rtt\RTT_Syscalls_KEIL.c</PathWithFileName>
-      <FilenameWithoutPath>RTT_Syscalls_KEIL.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>6</GroupNumber>
-      <FileNumber>18</FileNumber>
+      <FileNumber>19</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -431,7 +450,7 @@
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>19</FileNumber>
+      <FileNumber>20</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>

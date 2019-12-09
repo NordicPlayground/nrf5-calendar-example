@@ -10,12 +10,13 @@
       <TargetName>nrf52832_xxaa</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
+      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>nRF52832_xxAA</Device>
           <Vendor>Nordic Semiconductor</Vendor>
-          <PackID>NordicSemiconductor.nRF_DeviceFamilyPack.8.13.0</PackID>
+          <PackID>NordicSemiconductor.nRF_DeviceFamilyPack.8.12.0</PackID>
           <PackURL>http://developer.nordicsemi.com/nRF5_SDK/pieces/nRF_DeviceFamilyPack/</PackURL>
           <Cpu>IROM(0x00000000,0x80000) IRAM(0x20000000,0x10000) CPUTYPE("Cortex-M4") FPU2 CLOCK(64000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -323,6 +324,7 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
@@ -335,7 +337,7 @@
               <MiscControls>--reduce_paths</MiscControls>
               <Define>BOARD_PCA10040 BSP_DEFINES_ONLY CONFIG_GPIO_AS_PINRESET NRF52 NRF52832_XXAA NRF52_PAN_12 NRF52_PAN_15 NRF52_PAN_20 NRF52_PAN_31 NRF52_PAN_36 NRF52_PAN_51 NRF52_PAN_54 NRF52_PAN_55 NRF52_PAN_58 NRF52_PAN_64 NRF52_PAN_74</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\config\temperature_pca10040;..\..\..\config;..\..\..\..\..\..\components;..\..\..\..\..\..\components\boards;..\..\..\..\..\..\components\drivers_nrf\common;..\..\..\..\..\..\components\drivers_nrf\delay;..\..\..\..\..\..\components\drivers_nrf\hal;..\..\..\..\..\..\components\drivers_nrf\nrf_soc_nosd;..\..\..\..\..\..\components\drivers_nrf\uart;..\..\..\..\..\..\components\libraries\bsp;..\..\..\..\..\..\components\libraries\log;..\..\..\..\..\..\components\libraries\log\src;..\..\..\..\..\..\components\libraries\strerror;..\..\..\..\..\..\components\libraries\util;..\..\..\..\..\..\components\toolchain;..\..\..;..\..\..\..\..\..\external\segger_rtt;..\config;..\..\..\..\..\..\components\libraries\uart;..\..\..\..\..\..\components\libraries\fifo</IncludePath>
+              <IncludePath>..\..\..\config\temperature_pca10040;..\..\..\config;..\..\..\..\..\..\components;..\..\..\..\..\..\components\boards;..\..\..\..\..\..\components\drivers_nrf\common;..\..\..\..\..\..\components\libraries\delay;..\..\..\..\..\..\components\drivers_nrf\hal;..\..\..\..\..\..\components\drivers_nrf\nrf_soc_nosd;..\..\..\..\..\..\components\drivers_nrf\uart;..\..\..\..\..\..\components\libraries\bsp;..\..\..\..\..\..\components\libraries\log;..\..\..\..\..\..\components\libraries\log\src;..\..\..\..\..\..\components\libraries\strerror;..\..\..\..\..\..\components\libraries\util;..\..\..\..\..\..\components\toolchain;..\..\..;..\..\..\..\..\..\external\segger_rtt;..\config;..\..\..\..\..\..\components\libraries\uart;..\..\..\..\..\..\components\libraries\fifo;..\..\..\..\..\..\modules\nrfx\hal;..\..\..\..\..\..\modules\nrfx;..\..\..\..\..\..\modules\nrfx\mdk;..\..\..\..\..\..\integration\nrfx;..\..\..\..\..\..\integration\nrfx\legacy;..\..\..\..\..\..\modules\nrfx\drivers\include;..\..\..\..\..\..\components\libraries\experimental_section_vars</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -410,14 +412,19 @@
           <GroupName>nRF_Drivers</GroupName>
           <Files>
             <File>
-              <FileName>nrf_drv_common.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\components\drivers_nrf\common\nrf_drv_common.c</FilePath>
-            </File>
-            <File>
               <FileName>nrf_drv_uart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\components\drivers_nrf\uart\nrf_drv_uart.c</FilePath>
+              <FilePath>..\..\..\..\..\..\integration\nrfx\legacy\nrf_drv_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>nrfx_uarte.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\modules\nrfx\drivers\src\nrfx_uarte.c</FilePath>
+            </File>
+            <File>
+              <FileName>nrfx_prs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\modules\nrfx\drivers\src\prs\nrfx_prs.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -484,11 +491,6 @@
         <Group>
           <GroupName>nRF_Segger_RTT</GroupName>
           <Files>
-            <File>
-              <FileName>RTT_Syscalls_KEIL.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\external\segger_rtt\RTT_Syscalls_KEIL.c</FilePath>
-            </File>
             <File>
               <FileName>SEGGER_RTT.c</FileName>
               <FileType>1</FileType>

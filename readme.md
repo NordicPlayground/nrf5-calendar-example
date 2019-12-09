@@ -5,9 +5,9 @@ By default the example uses the external 32kHz crystal for maximum accuracy.
 
 Requirements
 ------------
-- nRF5 SDK version 13.0.0
+- nRF5 SDK version 16.0.0
 - nRF52 DK (PCA10040) or nRF52840 DK (PCA10056)
-- Keil uVision v5
+- Segger Embedded Studio or Keil uVision v5
 
 TODO
 ----

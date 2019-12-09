@@ -44,7 +44,7 @@
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../main.c" selected="1" top="156" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="491" useTextEdit="1" useBinaryEdit="0" left="0" path="../config/sdk_config.h" selected="0" top="468" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../components/libraries/uart/retarget.c" selected="0" top="69" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="60" y="46" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../components/libraries/uart/app_uart_fifo.c" selected="0" top="1" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="46" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../components/libraries/uart/app_uart_fifo.c" selected="0" top="31" codecName="Default"/>
  </Files>
- <ARMCrossStudioWindow activeProject="temperature_pca10040" fileDialogDefaultFilter="" autoConnectTarget="J-Link" buildConfiguration="Release" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="C:/Nordic_Semiconductor/nRF5_SDK_16.0.0/examples/_too/nrf_calendar_example" debugSearchPath="" autoConnectCapabilities="3199"/>
+ <ARMCrossStudioWindow activeProject="nrf_calendar_pca10040" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Release" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="C:/Nordic_Semiconductor/nRF5_SDK_16.0.0/examples/_too/nrf_calendar_example" debugSearchPath="" autoConnectCapabilities="3199"/>
 </session>
