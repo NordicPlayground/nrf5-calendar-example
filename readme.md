@@ -13,7 +13,6 @@ TODO
 ----
 - Add SoftDevice support 
 - Add an option to use the app_timer module instead of the RTC
-- Update IAR and GCC project/make files
 
 Note
 ----
