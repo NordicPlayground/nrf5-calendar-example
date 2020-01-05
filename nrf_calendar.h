@@ -20,10 +20,12 @@
 // Change the following defines to change the RTC timer used or the interrupt priority
 #ifndef CAL_RTC
 #define CAL_RTC                 NRF_RTC0
-#endif
 #define CAL_RTC_IRQn            RTC0_IRQn
 #define CAL_RTC_IRQHandler      RTC0_IRQHandler
+#endif
+#ifndef CAL_RTC_IRQ_Priority
 #define CAL_RTC_IRQ_Priority    3
+#endif
 
 // Initializes the calendar library. Run this before calling any other functions. 
 void nrf_cal_init(void);

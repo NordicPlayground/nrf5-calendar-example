@@ -18,6 +18,10 @@ static time_t m_time, m_last_calibrate_time = 0;
 static float m_calibrate_factor = 0.0f;
 static uint32_t m_rtc_increment = 60;
 static void (*cal_event_callback)(void) = 0;
+// Prescaler @ 33 = 1.007ms/RTC tick.
+const static uint32_t rtc_prescaler = 33;
+// 1.007ms * 993 = 1.00003s, used to scale RTC ticks to seconds.
+const static uint32_t cc_scaler = 993;
  
 void nrf_cal_init(void)
 {
@@ -28,13 +32,14 @@ void nrf_cal_init(void)
     while(NRF_CLOCK->EVENTS_LFCLKSTARTED == 0);
     
     // Configure the RTC for 1 minute wakeup (default)
-    CAL_RTC->PRESCALER = 0xFFF;
+    CAL_RTC->PRESCALER = rtc_prescaler;
     CAL_RTC->EVTENSET = RTC_EVTENSET_COMPARE0_Msk;
     CAL_RTC->INTENSET = RTC_INTENSET_COMPARE0_Msk;
-    CAL_RTC->CC[0] = m_rtc_increment * 8;
+    
+    CAL_RTC->CC[0] = m_rtc_increment * cc_scaler;
     CAL_RTC->TASKS_START = 1;
     NVIC_SetPriority(CAL_RTC_IRQn, CAL_RTC_IRQ_Priority);
-    NVIC_EnableIRQ(CAL_RTC_IRQn);  
+    NVIC_EnableIRQ(CAL_RTC_IRQn);
 }
 
 void nrf_cal_set_callback(void (*callback)(void), uint32_t interval)
@@ -42,9 +47,9 @@ void nrf_cal_set_callback(void (*callback)(void), uint32_t interval)
     // Set the calendar callback, and set the callback interval in seconds
     cal_event_callback = callback;
     m_rtc_increment = interval;
-    m_time += CAL_RTC->COUNTER / 8;
+    m_time += CAL_RTC->COUNTER / cc_scaler;
     CAL_RTC->TASKS_CLEAR = 1;
-    CAL_RTC->CC[0] = interval * 8;  
+    CAL_RTC->CC[0] = interval * cc_scaler;  
 }
  
 void nrf_cal_set_time(uint32_t year, uint32_t month, uint32_t day, uint32_t hour, uint32_t minute, uint32_t second)
@@ -73,10 +78,11 @@ void nrf_cal_set_time(uint32_t year, uint32_t month, uint32_t day, uint32_t hour
 
 struct tm *nrf_cal_get_time(void)
 {
-    time_t return_time;
-    return_time = m_time + CAL_RTC->COUNTER / 8;
-    m_tm_return_time = *localtime(&return_time);
-    return &m_tm_return_time;
+     time_t return_time;
+
+     return_time = m_time + CAL_RTC->COUNTER / cc_scaler;
+     m_tm_return_time = *localtime(&return_time);
+     return &m_tm_return_time;
 }
 
 struct tm *nrf_cal_get_time_calibrated(void)
@@ -84,7 +90,7 @@ struct tm *nrf_cal_get_time_calibrated(void)
     time_t uncalibrated_time, calibrated_time;
     if(m_calibrate_factor != 0.0f)
     {
-        uncalibrated_time = m_time + CAL_RTC->COUNTER / 8;
+        uncalibrated_time = m_time + CAL_RTC->COUNTER / cc_scaler;
         calibrated_time = m_last_calibrate_time + (time_t)((float)(uncalibrated_time - m_last_calibrate_time) * m_calibrate_factor + 0.5f);
         m_tm_return_time = *localtime(&calibrated_time);
         return &m_tm_return_time;
