@@ -18,6 +18,8 @@ static time_t m_time, m_last_calibrate_time = 0;
 static float m_calibrate_factor = 0.0f;
 static uint32_t m_rtc_increment = 60;
 static void (*cal_event_callback)(void) = 0;
+
+static uint32_t max_RTC_COUNTER_value = 0;
  
 void nrf_cal_init(void)
 {
@@ -31,7 +33,8 @@ void nrf_cal_init(void)
     CAL_RTC->PRESCALER = 0xFFF;
     CAL_RTC->EVTENSET = RTC_EVTENSET_COMPARE0_Msk;
     CAL_RTC->INTENSET = RTC_INTENSET_COMPARE0_Msk;
-    CAL_RTC->CC[0] = m_rtc_increment * 8;
+    max_RTC_COUNTER_value = m_rtc_increment * 8;
+    CAL_RTC->CC[0] = max_RTC_COUNTER_value;
     CAL_RTC->TASKS_START = 1;
     NVIC_SetPriority(CAL_RTC_IRQn, CAL_RTC_IRQ_Priority);
     NVIC_EnableIRQ(CAL_RTC_IRQn);  
@@ -44,7 +47,8 @@ void nrf_cal_set_callback(void (*callback)(void), uint32_t interval)
     m_rtc_increment = interval;
     m_time += CAL_RTC->COUNTER / 8;
     CAL_RTC->TASKS_CLEAR = 1;
-    CAL_RTC->CC[0] = interval * 8;  
+    max_RTC_COUNTER_value = m_rtc_increment * 8;
+    CAL_RTC->CC[0] = max_RTC_COUNTER_value;  
 }
  
 void nrf_cal_set_time(uint32_t year, uint32_t month, uint32_t day, uint32_t hour, uint32_t minute, uint32_t second)
@@ -74,6 +78,7 @@ void nrf_cal_set_time(uint32_t year, uint32_t month, uint32_t day, uint32_t hour
 struct tm *nrf_cal_get_time(void)
 {
     time_t return_time;
+    while(CAL_RTC->COUNTER >= max_RTC_COUNTER_value) {}; //added in case CLEAR was not taken in account
     return_time = m_time + CAL_RTC->COUNTER / 8;
     m_tm_return_time = *localtime(&return_time);
     return &m_tm_return_time;
@@ -84,6 +89,7 @@ struct tm *nrf_cal_get_time_calibrated(void)
     time_t uncalibrated_time, calibrated_time;
     if(m_calibrate_factor != 0.0f)
     {
+        while(CAL_RTC->COUNTER >= max_RTC_COUNTER_value) {}; //added in case CLEAR was not taken in account
         uncalibrated_time = m_time + CAL_RTC->COUNTER / 8;
         calibrated_time = m_last_calibrate_time + (time_t)((float)(uncalibrated_time - m_last_calibrate_time) * m_calibrate_factor + 0.5f);
         m_tm_return_time = *localtime(&calibrated_time);
